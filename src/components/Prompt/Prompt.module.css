@@ -1,3 +1,4 @@
+/* Updated and Optimized CSS */
 .container {
   display: flex;
   justify-content: center;
@@ -7,17 +8,19 @@
   height: 50px;
   position: fixed;
   background-color: #232323;
-  box-shadow: 0 30px 60px #0000001f;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(100px) saturate(400%) brightness(100%);
-  border: 1px solid #ffffff14;
+  -webkit-backdrop-filter: blur(100px) saturate(400%) brightness(100%); /* Safari Support */
+  border: 1px solid rgba(255, 255, 255, 0.08);
   bottom: -4px;
   left: 50%;
   border-radius: 12px;
   z-index: 1;
   transform: translate(-50%, -50%) translateY(80px);
-  animation: 500ms ease 200ms 1 normal forwards running footer;
+  animation: footer 500ms ease 200ms 1 normal forwards;
   transition: all 1s;
 }
+
 .toolTipContainer {
   position: absolute;
   top: -42px;
@@ -27,8 +30,9 @@
   font-size: 14px;
   font-weight: 500;
   color: #000000;
-  animation: fadeInFromNone 1000ms ease-in-out;
+  animation: fadeInFromNone 300ms ease-in-out;
 }
+
 .toolTipContainer::after {
   content: " ";
   position: absolute;
@@ -39,20 +43,16 @@
   border-style: solid;
   border-color: white transparent transparent transparent;
 }
+
 @keyframes fadeInFromNone {
   0% {
-    display: none;
-    opacity: 0;
-  }
-  1% {
-    display: flex;
     opacity: 0;
   }
   100% {
-    display: flex;
     opacity: 1;
   }
 }
+
 .promptContainer {
   display: flex;
   justify-content: space-between;
@@ -61,20 +61,21 @@
   padding: 8px;
   padding-left: 0px;
 }
+
 .promptText {
   width: 100%;
   height: 27px;
   font-size: 18px;
   color: #ffffff;
   background-color: transparent;
-  border-width: 0px;
+  border: none;
   margin-right: 8px;
 }
+
 .promptText:focus {
   outline: none;
-  outline-color: transparent;
-  box-shadow: none !important;
 }
+
 .sendButton {
   display: flex;
   justify-content: center;
@@ -84,12 +85,14 @@
   border-radius: 6px;
   background-color: #ffffff;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
 }
+
 .spinner {
   width: 24px;
   height: 24px;
 }
+
 .retryContainer {
   display: flex;
   justify-content: center;
@@ -97,20 +100,22 @@
   width: auto;
   height: 50px;
   position: fixed;
-  background-color: rgb(255, 65, 34, 0.25);
-  box-shadow: 0 30px 60px #ff00001f;
+  background-color: rgba(255, 65, 34, 0.25);
+  box-shadow: 0 30px 60px rgba(255, 0, 0, 0.12);
   backdrop-filter: blur(100px) saturate(400%) brightness(100%);
-  border: 1px solid #ff4122aa;
+  -webkit-backdrop-filter: blur(100px) saturate(400%) brightness(100%); /* Safari Support */
+  border: 1px solid rgba(255, 65, 34, 0.67);
   bottom: -4px;
   left: 50%;
   border-radius: 12px;
   z-index: 1;
   transform: translate(-50%, -50%) translateY(80px);
-  animation: 500ms ease 200ms 1 normal forwards running footer;
+  animation: footer 500ms ease 200ms 1 normal forwards;
   transition: all 1s;
   cursor: pointer;
   padding-left: 16px;
 }
+
 .forkContainer {
   display: flex;
   justify-content: center;
@@ -119,19 +124,21 @@
   height: 50px;
   position: fixed;
   background-color: #232323;
-  box-shadow: 0 30px 60px #0000001f;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
   backdrop-filter: blur(100px) saturate(400%) brightness(100%);
-  border: 1px solid #ffffff14;
+  -webkit-backdrop-filter: blur(100px) saturate(400%) brightness(100%); /* Safari Support */
+  border: 1px solid rgba(255, 255, 255, 0.08);
   bottom: -4px;
   left: 50%;
   border-radius: 12px;
   z-index: 1;
   transform: translate(-50%, -50%) translateY(80px);
-  animation: 500ms ease 200ms 1 normal forwards running footer;
+  animation: footer 500ms ease 200ms 1 normal forwards;
   transition: all 1s;
   cursor: pointer;
   padding-left: 16px;
 }
+
 .retryButton {
   display: flex;
   justify-content: center;
@@ -141,8 +148,9 @@
   border-radius: 6px;
   background-color: #ffffff;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
 }
+
 .stopButton {
   display: flex;
   justify-content: center;
@@ -152,7 +160,13 @@
   border-radius: 6px;
   background-color: #ff4629;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.2s;
+}
+
+.blur-effect {
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+  -webkit-backdrop-filter: blur(10px); /* For Safari 9+ */
+  backdrop-filter: blur(10px); /* For modern browsers */
 }
 
 @keyframes footer {
@@ -169,7 +183,11 @@
 @media (max-width: 512px) {
   .container {
     min-width: 90%;
+    padding: 8px;
     border-radius: 12px;
     bottom: 0px;
+  }
+  .promptText {
+    font-size: 16px;
   }
 }
